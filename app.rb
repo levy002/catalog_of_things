@@ -3,15 +3,16 @@ require './book/label_controller'
 
 class App
   attr_reader :label_controller
+
   def initialize
-    @book_controller = BookController.new()
-    @label_controller = LabelController.new()
-  end  
+    @book_controller = BookController.new
+    @label_controller = LabelController.new
+  end
 
   def books
     puts "
        1. List all books
-       2. List all labels 
+       2. List all labels
        3. Add new book
        4. Add new label
     "
@@ -25,6 +26,9 @@ class App
       @book_controller.add_book
     when '4'
       @label_controller.add_label
+    else
+      puts 'Invalid choice'
+      books
     end
   end
 
