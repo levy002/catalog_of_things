@@ -9,5 +9,8 @@ class Author
     @items = []
   end
 
-
+  def add_item(item)
+    @items.push(self) unless @items.include?(item)
+    author.item = self
+  end
 end
