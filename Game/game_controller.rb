@@ -13,6 +13,10 @@ class GameController
     @games
   end
 
+  def list_authors
+    @authors
+  end
+
   def add_game
     puts 'Please fill the following information:'
     puts ''
