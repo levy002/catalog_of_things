@@ -7,8 +7,14 @@ describe Label do
       @title = 'Fiction'
       @color = 'Blue'
       @label = Label.new(@title, @color)
-      expect(@label.title).to eql @title
-      expect(@label.color).to eql @color
+      (
+        @expected_value = @title
+        expect(@label.title).to eql @expected_value
+      )
+      (
+        @expected_value = @color
+        expect(@label.color).to eql @expected_value
+      )
     end
 
     it 'should add the input item to the collection of items and add label into colection of item.label' do

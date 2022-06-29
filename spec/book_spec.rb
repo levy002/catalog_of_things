@@ -7,9 +7,19 @@ describe Book do
       @cover_state = 'bad'
       @publish_date = 2020
       @book = Book.new(@publisher, @cover_state, @publish_date)
-      expect(@book.publisher).to eql @publisher
-      expect(@book.cover_state).to eql @cover_state
-      expect(@book.publish_date).to eql @publish_date
+
+      (
+        @expected_value = @publisher
+        expect(@book.publisher).to eql @expected_value
+      )
+      (
+        @expected_value = @cover_state
+        expect(@book.cover_state).to eql @expected_value
+      )
+      (
+        @expected_value = @publish_date
+        expect(@book.publish_date).to eql @expected_value
+      )
     end
 
     it "should return true if parent's method returns true OR if cover_state equals to 'bad'" do
@@ -17,7 +27,10 @@ describe Book do
       @cover_state = 'bad'
       @publish_date = 2020
       @book = Book.new(@publisher, @cover_state, @publish_date)
-      expect(@book.can_be_archived?).to eql true
+      (
+        @expected_value = true
+        expect(@book.can_be_archived?).to eql @expected_value
+      )
     end
 
     it "should return false if parent's method returns false and if cover_state equals to 'good'" do
@@ -25,7 +38,10 @@ describe Book do
       @cover_state = 'good'
       @publish_date = 2020
       @book = Book.new(@publisher, @cover_state, @publish_date)
-      expect(@book.can_be_archived?).to eql false
+      (
+        @expected_value = false
+        expect(@book.can_be_archived?).to eql @expected_value
+      )
     end
   end
 end
