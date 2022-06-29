@@ -32,3 +32,13 @@ def save_genres(genres)
       end
     musics
   end
+
+  def read_genres
+    genres = []
+    all_genres = File.read('./musicAlbum/data/genres.json')
+    JSON.parse(all_genres).each do |genre|
+        new_genre = Genre.new(genre['name'])
+        genres.push(new_genre)
+      end
+    genres
+  end
