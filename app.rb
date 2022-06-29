@@ -1,4 +1,11 @@
+require_relative './musicAlbum/musicController'
+
 class App
+  attr_accessor :music_controller
+  def initialize
+    @music_controller = MusicController.new
+  end
+
   def books; end
 
   def music
@@ -16,7 +23,7 @@ class App
     when 2
       puts "List all genres"
     when 3
-      puts "Add a music album"
+      @music_controller.add_music
     when 4
       puts "Add a genre"
     else
