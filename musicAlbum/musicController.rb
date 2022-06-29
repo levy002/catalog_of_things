@@ -7,6 +7,16 @@ class MusicController
       @musics = []
     end
 
+    def list_all_music
+        if @musics.length.zero?
+          puts 'You don\'t have any musics available'
+        else
+          @musics.each_with_index do |mq, index|
+            puts "#{index}) On spotify: #{mq.on_spotify}, Publish date: #{mq.publish_date}"
+          end
+        end
+      end      
+
     def add_music
         puts 'Great! let\'s create the music!'
         print "When was your music published? "

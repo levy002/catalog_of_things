@@ -19,7 +19,7 @@ class App
 
     case choice
     when 1
-      puts "List all music almbums"
+      @music_controller.list_all_music
     when 2
       puts "List all genres"
     when 3
