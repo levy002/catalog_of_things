@@ -7,6 +7,7 @@ class Item
     @archived = false
     @publish_date = publish_date
     @source = nil
+    @genre = nil
   end
 
   def can_be_archived?
@@ -29,5 +30,10 @@ class Item
   def add_source(source)
     @source = source
     source.items.push(self) unless source.items.included?(self)
+  end
+
+  def genre=(genre)
+    @genre = genre
+    genre.item.push(self) unless genre.item.included?(self)
   end
 end
