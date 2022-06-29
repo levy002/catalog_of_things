@@ -1,5 +1,10 @@
 require 'json'
 
+def read_data
+  read_games
+  read_authors
+end
+
 def read_games
   file = File.read('games.json') if File.exist?('games.json')
   games = JSON.parse(file) unless file.chomp.empty?
