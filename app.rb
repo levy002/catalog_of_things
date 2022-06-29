@@ -4,7 +4,7 @@ require './book/book_controller'
 require './book/label_controller'
 
 class App
-  attr_accessor :music_controller
+  attr_accessor :music_controller, :game_controller
   attr_reader :label_controller
 
   def initialize
@@ -66,6 +66,7 @@ class App
     1. List all games
     2. List all authors
     3. Add new game
+    4. Add an author
     "
     choice = gets.chomp
     case choice
@@ -75,6 +76,8 @@ class App
       @game_controller.list_authors
     when '3'
       @game_controller.add_game
+    when '4'
+      @game_controller.add_author
     else
       puts 'Invalid choice'
       games
