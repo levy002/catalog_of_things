@@ -28,4 +28,15 @@ class GameController
     @games << game unless @games.include?(game)
     puts 'Game successfully created'
   end
+
+  def add_author
+    puts 'Please fill the following information:'
+    puts ''
+    puts 'Enter your first name: '
+    first_name = $stdin.gets.chomp
+    print 'Enter your last name: '
+    last_name = $stdin.gets.chomp
+    author = Author.new(first_name, last_name)
+    @authors << author unless @authors.include?(author)
+  end
 end
