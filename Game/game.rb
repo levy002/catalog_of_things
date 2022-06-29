@@ -9,8 +9,6 @@ class Game < Item
     @last_played_at = last_played_at
   end
 
-  private
-
   def can_be_archived?()
     super == true && @last_played_at > 2
   end
