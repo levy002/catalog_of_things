@@ -13,7 +13,7 @@ end
 
 def save_author
   author_array = @method.game_controller.authors do |author|
-    { class_instance: 'Author', first_name: author.first_name, last_name: author.last_name, item_id: author.item.id }
+    { class_instance: 'Author', first_name: author.first_name, last_name: author.last_name }
   end
   authors = JSON.generate(author_array)
   File.write('authors.json', authors)
