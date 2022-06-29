@@ -14,7 +14,7 @@ class GameController
   end
 
   def list_authors
-    @authors
+    @authors.map { |author| puts "Name: #{author.first_name author.last_name}" }
   end
 
   def add_game
@@ -22,7 +22,7 @@ class GameController
     puts ''
     puts 'Enter your name (Multiplayer): '
     multiplayer = $stdin.gets.chomp
-    print 'When last did you play("yyyy-mm-dd"): '
+    print 'When last did you play?("YYYY"): '
     last_played_at = $stdin.gets.chomp
     game = Game.new(multiplayer, last_played_at)
     @games << game unless @games.include?(game)
