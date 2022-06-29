@@ -26,7 +26,7 @@ class Item
     @label.add_item
   end
 
-  def source(source)
+  def add_source(source)
     @source = source
     source.items.push(self) unless source.items.included?(self)
   end
