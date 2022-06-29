@@ -13,3 +13,12 @@ def save_musics(musics)
   File.write('./musicAlbum/data/musics.json', JSON.generate(mq).to_s)
 end
 
+def save_genres(genres)
+    gen = []
+    genres.each do |genre|
+      gen.push({
+                "name": genre.name,
+              })
+    end
+    File.write('./musicAlbum/data/genres.json', JSON.generate(gen).to_s)
+  end`
