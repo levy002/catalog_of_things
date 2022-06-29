@@ -6,6 +6,7 @@ class Item
     @id = Random.rand(1...1000)
     @archived = false
     @publish_date = publish_date
+    @genre = nil
   end
 
   def can_be_archived?
@@ -23,5 +24,10 @@ class Item
   def add_label(label)
     @label = label
     @label.add_item
+  end
+
+  def genre=(genre)
+    @genre = genre
+    genre.item.push(self) unless genre.item.included?(self)
   end
 end
