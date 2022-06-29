@@ -1,11 +1,12 @@
 class Item
-  attr_reader :archived, :label, :author, :genre
+  attr_reader :archived, :label, :author, :genre, :source
   attr_accessor :publish_date
 
   def initialize(publish_date)
     @id = Random.rand(1...1000)
     @archived = false
     @publish_date = publish_date
+    @source = nil
   end
 
   def can_be_archived?
@@ -23,5 +24,10 @@ class Item
   def add_label(label)
     @label = label
     @label.add_item
+  end
+
+  def source(source)
+    @source = source
+    source.items.push(self) unless source.items.included?(self)
   end
 end
