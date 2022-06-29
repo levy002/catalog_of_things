@@ -6,8 +6,8 @@ def save_musics(musics)
   mq = []
   musics.each do |music|
     mq.push({
-              "on_spotify": music.on_spotify,
-              "publish_date": music.publish_date
+              on_spotify: music.on_spotify,
+              publish_date: music.publish_date
             })
   end
   File.write('./musicAlbum/data/musics.json', JSON.generate(mq).to_s)
@@ -17,7 +17,7 @@ def save_genres(genres)
   gen = []
   genres.each do |genre|
     gen.push({
-               "name": genre.name
+               name: genre.name
              })
   end
   File.write('./musicAlbum/data/genres.json', JSON.generate(gen).to_s)
