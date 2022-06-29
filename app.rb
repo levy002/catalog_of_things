@@ -1,4 +1,4 @@
-require_relative './Game/game_controller'
+require_relative './game/game_controller'
 require './book/book_controller'
 require './book/label_controller'
 
