@@ -6,6 +6,7 @@ class Item
     @id = Random.rand(1...1000)
     @archived = false
     @publish_date = publish_date
+    @label = nil
     @source = nil
     @genre = nil
   end
@@ -24,7 +25,7 @@ class Item
 
   def add_label(label)
     @label = label
-    @label.add_item
+    label.items.push(self) unless label.items.include?(self)
   end
 
   def add_source(source)
