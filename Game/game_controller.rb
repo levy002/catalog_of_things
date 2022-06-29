@@ -22,10 +22,10 @@ class GameController
     puts ''
     puts 'Enter your name (Multiplayer): '
     multiplayer = $stdin.gets.chomp
-    print 'When last did you play?("YYYY"): '
+    print 'When last did you play (Year)?("YYYY"): '
     last_played_at = $stdin.gets.chomp
     game = Game.new(multiplayer, last_played_at)
     @games << game unless @games.include?(game)
-    puts 'Person successfully created'
+    puts 'Game successfully created'
   end
 end
