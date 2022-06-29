@@ -23,15 +23,25 @@ class MusicController
     date_of_music_publish = gets.chomp
     print 'Is your music on spotify? (yes/no) '
     is_on_spotify = gets.chomp
-    case is_on_spotify
-    when 'yes'
-      musiq = MusicAlbum.new(true, date_of_music_publish)
-    when 'no'
-      musiq = MusicAlbum.new(false, date_of_music_publish)
-    else
-      puts 'That was an invalid option'
-    end
+
+    spotify_state = check_spotify_state(is_on_spotify)
+    musiq = MusicAlbum.new(spotify_state, date_of_music_publish)
     @musics << musiq
     puts 'Your music was added succesfully!'
+  end
+
+  def check_spotify_state(state)
+    case state
+    when 'yes'
+      true
+    when 'no'
+      false
+    else
+      puts 'That was an invalid option'
+      puts ''
+      print 'Is your music on spotify? (yes/no) '
+      state = gets.chomp
+      check_spotify_state(state)
+    end
   end
 end
