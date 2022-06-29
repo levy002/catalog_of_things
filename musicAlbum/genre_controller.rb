@@ -2,7 +2,6 @@ require_relative './genre'
 require_relative './handle_data'
 require 'json'
 
-
 class GenreController
   attr_accessor :musics
 
