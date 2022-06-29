@@ -16,6 +16,10 @@ describe Movie do
       expected_value = true
       expect(@movie.silet).to be(expected_value)
     end
+
+    it 'can_be_archived method is private method and returns true if ' do
+      expect(@movie.send(:can_be_archived?)).to be(true)
+    end
   end
 
 end
