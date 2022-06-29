@@ -25,7 +25,7 @@ class GameController
     print 'When last did you play("yyyy-mm-dd"): '
     last_played_at = $stdin.gets.chomp
     game = Game.new(multiplayer, last_played_at)
-    @game_controller << game unless @game_controller.include?(game)
+    @games << game unless @games.include?(game)
     puts 'Person successfully created'
   end
 end

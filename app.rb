@@ -1,4 +1,4 @@
-require_relative '../game_controller'
+require_relative './Game/game_controller'
 class App
   attr_accessor :game_controller
 
@@ -12,9 +12,9 @@ class App
 
   def games
     puts "
-      1. List all games
-      2. List all authors
-      3. Add new book
+    1. List all games
+    2. List all authors
+    3. Add new game
     "
     choice = gets.chomp
     case choice
