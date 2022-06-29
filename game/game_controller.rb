@@ -14,7 +14,7 @@ class GameController
   end
 
   def list_authors
-    @authors.map { |author| puts "Name: #{author.first_name author.last_name}" }
+    @authors.map { |author| puts "Name: #{author.first_name} #{author.last_name}" }
   end
 
   def add_game
@@ -38,5 +38,6 @@ class GameController
     last_name = $stdin.gets.chomp
     author = Author.new(first_name, last_name)
     @authors << author unless @authors.include?(author)
+    puts 'Author successfully created'
   end
 end

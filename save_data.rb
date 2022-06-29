@@ -1,6 +1,7 @@
 def save_data
   save_game
   save_author
+  puts 'All data saved'
 end
 
 def save_game
@@ -8,13 +9,13 @@ def save_game
     { class_instance: 'Game', multiplayer: game.multiplayer, last_played_at: game.last_played_at }
   end
   games = JSON.generate(games_array)
-  File.write('games.json', games)
+  File.write('game/games.json', games)
 end
 
 def save_author
-  author_array = @method.game_controller.authors do |author|
+  author_array = @method.game_controller.authors.map do |author|
     { class_instance: 'Author', first_name: author.first_name, last_name: author.last_name }
   end
   authors = JSON.generate(author_array)
-  File.write('authors.json', authors)
+  File.write('game/authors.json', authors)
 end
