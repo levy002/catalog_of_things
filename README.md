@@ -38,6 +38,13 @@ Enjoy!
 - Twitter: [@Nemwel Boniface](https://twitter.com/nemwel_bonie)
 - LinkedIn: [@Nemwel Bonifacej](https://www.linkedin.com/in/nemwel-nyandoro/)
 
+👤 **Wuletaw Wonte**
+
+- GitHub: [@Wuletaw Wonte](https://github.com/wuletawwonte)
+- Twitter: [@Wuletaw Wonte](https://twitter.com/wuletaww)
+- LinkedIn: [@Wuletaw Wonte](https://www.linkedin.com/in/wuletaw-wonte/)
+
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!

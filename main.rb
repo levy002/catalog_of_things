@@ -29,6 +29,7 @@ def match_input(choice)
   when 4
     @method.movies
   when 5
+    puts 'Thanks for using our catalog. Byee!!!'
     exit!
   else
     puts 'Not a valid choice'
