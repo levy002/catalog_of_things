@@ -1,4 +1,4 @@
-require_relative '../item.rb'
+require_relative '../item'
 
 class Source
   attr_accessor :name, :items
@@ -14,4 +14,3 @@ class Source
     item.source = self
   end
 end
-
