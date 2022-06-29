@@ -10,7 +10,7 @@ class GameController
   end
 
   def list_games
-    @games
+    @games.map { |game| puts "Multiplayer: #{game.multiplayer}, Last played at: #{game.last_played_at}" }
   end
 
   def list_authors
