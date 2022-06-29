@@ -1,10 +1,13 @@
 require_relative './genre'
+require_relative './handle_data'
+require 'json'
+
 
 class GenreController
   attr_accessor :musics
 
   def initialize
-    @genres = []
+    @genres = read_genres
   end
 
   def list_all_genres
@@ -23,6 +26,7 @@ class GenreController
     genre_name = gets.chomp
     genrez = Genre.new(genre_name)
     @genres << genrez
+    save_genres(@genres)
     puts 'Your genre was added succesfully!'
   end
 end

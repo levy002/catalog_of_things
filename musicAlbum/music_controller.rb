@@ -1,10 +1,12 @@
 require_relative './musicalbum'
+require_relative './handle_data'
+require 'json'
 
 class MusicController
   attr_accessor :musics
 
   def initialize
-    @musics = []
+    @musics = read_musics
   end
 
   def list_all_music
@@ -27,6 +29,7 @@ class MusicController
     spotify_state = check_spotify_state(is_on_spotify)
     musiq = MusicAlbum.new(spotify_state, date_of_music_publish)
     @musics << musiq
+    save_musics(@musics)
     puts 'Your music was added succesfully!'
   end
 
