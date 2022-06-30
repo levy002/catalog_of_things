@@ -1,10 +1,12 @@
 require_relative './game/game_controller'
 require_relative './musicAlbum/music_controller'
+require_relative './musicAlbum/genre_controller'
 require './book/book_controller'
 require './book/label_controller'
 
 class App
   attr_accessor :music_controller, :game_controller
+  attr_accessor :music_controller
   attr_reader :label_controller
 
   def initialize
@@ -12,6 +14,7 @@ class App
     @label_controller = LabelController.new
     @game_controller = GameController.new
     @music_controller = MusicController.new
+    @genre_controller = GenreController.new
   end
 
   def books
@@ -55,6 +58,11 @@ class App
       @music_controller.add_music
     when 4
       puts 'Add a genre'
+      @genre_controller.list_all_genres
+    when 3
+      @music_controller.add_music
+    when 4
+      @genre_controller.add_genre
     else
       puts 'That was an invalid choice. Try again'
       music
