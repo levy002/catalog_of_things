@@ -1,10 +1,10 @@
-require_relative '../movie/movie.rb'
+require_relative '../movie/movie'
 
 describe Movie do
-  before :each do 
+  before :each do
     @movie = Movie.new(1990, true)
   end
-  
+
   context 'Create @movie, an instance of Movie class' do
     it 'takes two parameters and returns Movie object' do
       expect(@movie).to be_instance_of Movie
@@ -21,5 +21,4 @@ describe Movie do
       expect(@movie.send(:can_be_archived?)).to be(true)
     end
   end
-
 end

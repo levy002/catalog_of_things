@@ -20,7 +20,7 @@ class MovieController
       end
     end
     movies
-  end  
+  end
 
   def add_movie
     puts "Please fill the following information\n\n"
@@ -62,10 +62,9 @@ class MovieController
       source: movie.source
     }
     all_movies.push(temp_movie)
-  
+
     File.write('./movie/json_files/movie.json', JSON.generate(all_movies))
   end
-  
 
   def silet_choice(state)
     case state

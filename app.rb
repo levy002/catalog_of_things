@@ -38,7 +38,7 @@ class App
 
   def games; end
 
-  def movies; 
+  def movies
     puts "
       1. List all movies
       2. List all sources
@@ -56,6 +56,5 @@ class App
       puts 'Invalid choice'
       books
     end
-
   end
 end

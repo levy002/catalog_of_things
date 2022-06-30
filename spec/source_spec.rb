@@ -2,11 +2,11 @@ require_relative '../source/source'
 require_relative '../item'
 
 describe Source do
-  before :each do 
+  before :each do
     @source = Source.new('SourceOne')
     @item = Item.new(2021)
   end
-  
+
   context 'Create @source, an instance of Source class' do
     it 'takes two parameters and returns Source object' do
       expect(@source).to be_instance_of Source
@@ -25,5 +25,4 @@ describe Source do
       expect(@source.items.length).to eq(expected_value)
     end
   end
-
 end
