@@ -45,11 +45,9 @@ class App
     choice = gets.chomp
     case choice
     when '1'
-      @book_controller.books_list
+      @movie_controller.movies_list
     when '2'
-      @label_controller.labels_list
-    when '3'
-      @book_controller.add_book
+      @source_controller.sources_list
     when '4'
       @label_controller.add_label
     else
