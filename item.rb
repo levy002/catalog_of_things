@@ -7,6 +7,7 @@ class Item
     @archived = false
     @publish_date = publish_date
     @label = nil
+    @author = nil
     @source = nil
     @genre = nil
   end
