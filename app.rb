@@ -1,3 +1,4 @@
+require_relative './game/game_controller'
 require_relative './musicAlbum/music_controller'
 require_relative './musicAlbum/genre_controller'
 require './book/book_controller'
@@ -10,6 +11,7 @@ class App
   def initialize
     @book_controller = BookController.new
     @label_controller = LabelController.new
+    @game_controller = GameController.new
     @music_controller = MusicController.new
     @genre_controller = GenreController.new
   end
@@ -61,7 +63,25 @@ class App
     end
   end
 
-  def games; end
+  def games
+    puts "
+    1. List all games
+    2. List all authors
+    3. Add new game
+    "
+    choice = gets.chomp
+    case choice
+    when '1'
+      @game_controller.list_games
+    when '2'
+      @game_controller.list_authors
+    when '3'
+      @game_controller.add_game
+    else
+      puts 'Invalid choice'
+      games
+    end
+  end
 
   def movies; end
 end
