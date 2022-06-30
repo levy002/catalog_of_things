@@ -3,6 +3,7 @@ require_relative './musicAlbum/music_controller'
 require_relative './musicAlbum/genre_controller'
 require './book/book_controller'
 require './book/label_controller'
+require './movie/movie_controller'
 
 class App
   attr_accessor :music_controller, :game_controller
@@ -11,6 +12,7 @@ class App
   def initialize
     @book_controller = BookController.new
     @label_controller = LabelController.new
+    @movie_controller = MovieController.new
     @game_controller = GameController.new
     @music_controller = MusicController.new
     @genre_controller = GenreController.new
@@ -86,5 +88,23 @@ class App
     end
   end
 
-  def movies; end
+  def movies
+    puts "
+      1. List all movies
+      2. List all sources
+      3. Add a movie
+    "
+    choice = gets.chomp
+    case choice
+    when '1'
+      @movie_controller.movies_list
+    when '2'
+      @movie_controller.sources_list
+    when '3'
+      @movie_controller.add_movie
+    else
+      puts 'Invalid choice'
+      books
+    end
+  end
 end
