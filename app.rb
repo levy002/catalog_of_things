@@ -36,5 +36,26 @@ class App
 
   def games; end
 
-  def movies; end
+  def movies; 
+    puts "
+      1. List all movies
+      2. List all sources
+      3. Add a movie
+    "
+    choice = gets.chomp
+    case choice
+    when '1'
+      @book_controller.books_list
+    when '2'
+      @label_controller.labels_list
+    when '3'
+      @book_controller.add_book
+    when '4'
+      @label_controller.add_label
+    else
+      puts 'Invalid choice'
+      books
+    end
+
+  end
 end
