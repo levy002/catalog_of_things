@@ -81,13 +81,10 @@ class MovieController
   end
 
   def silet_choice(state)
-    case state
-    when 'y'
+    if state == 'y'
       true
-    when 'n'
-      false
     else
-      true
+      state != 'n'
     end
   end
 end
