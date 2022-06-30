@@ -9,13 +9,13 @@ CREATE TABLE games (
   label_id INT,
   archived BOOLEAN,
   PRIMARY KEY (id)
-  FOREIGN KEY (genre_id) REFERENCES genre (id),
-  FOREIGN KEY (author_id) REFERENCES author (id)
-  FOREIGN KEY (source_id) REFERENCES source (id)
-  FOREIGN KEY (label_id) REFERENCES label (id)
+  FOREIGN KEY (genre_id) REFERENCES genres (id),
+  FOREIGN KEY (author_id) REFERENCES authors (id)
+  FOREIGN KEY (source_id) REFERENCES sources (id)
+  FOREIGN KEY (label_id) REFERENCES labels (id)
 );
 
-CREATE TABLE author (
+CREATE TABLE authors (
   id INT GENERATED ALWAYS AS IDENTITY,
   first_name VARCHAR(100) NOT NULL,
   last_name VARCHAR(100) NOT NULL,
