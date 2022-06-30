@@ -17,7 +17,7 @@ class MovieController
       JSON.parse(all_movies).each do |movie|
         source = Source.new(movie['source'])
         new_movie = Movie.new(movie['publish_date'], movie['silet'])
-        new_movie.add_source(source);
+        new_movie.add_source(source)
         movies.push(new_movie)
       end
     end
@@ -52,6 +52,18 @@ class MovieController
       puts "\nThe movie list: \n"
       @movies.each_with_index do |m, index|
         puts "#{index + 1}) Published year: #{m.publish_date} | Is silet: #{m.silet} | Source: #{m.source.name}"
+      end
+    end
+  end
+
+  def sources_list
+    if @movies.empty?
+      puts 'No sources found!'
+    else
+      puts "\nThe source list: \n"
+      uniq_sources = @movies.uniq { |x| x.source.name }
+      uniq_sources.each_with_index do |s, index|
+        puts "#{index + 1}) #{s.source.name}"
       end
     end
   end
