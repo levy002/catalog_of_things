@@ -29,13 +29,18 @@ class Item
     label.items.push(self) unless label.items.include?(self)
   end
 
+  def add_author(author)
+    @author = author
+    author.items.push(self) unless author.items.include?(self)
+  end
+
   def add_source(source)
     @source = source
-    source.items.push(self) unless source.items.included?(self)
+    source.items.push(self) unless source.items.include?(self)
   end
 
   def genre=(genre)
     @genre = genre
-    genre.item.push(self) unless genre.item.included?(self)
+    genre.item.push(self) unless genre.item.include?(self)
   end
 end
