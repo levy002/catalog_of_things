@@ -6,7 +6,6 @@ require './book/label_controller'
 
 class App
   attr_accessor :music_controller, :game_controller
-  attr_accessor :music_controller
   attr_reader :label_controller
 
   def initialize
@@ -45,8 +44,7 @@ class App
     1. List all music albums
     2. List all genres
     3. Add a music album
-    4. Add a genre
-    Choose between the three: '
+    4. Add a genre '
     choice = gets.chomp.to_i
 
     case choice
@@ -59,10 +57,6 @@ class App
     when 4
       puts 'Add a genre'
       @genre_controller.list_all_genres
-    when 3
-      @music_controller.add_music
-    when 4
-      @genre_controller.add_genre
     else
       puts 'That was an invalid choice. Try again'
       music
