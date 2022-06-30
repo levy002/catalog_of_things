@@ -29,11 +29,11 @@ class Item
 
   def add_source(source)
     @source = source
-    source.items.push(self) unless source.items.included?(self)
+    source.items.push(self) unless source.items.include?(self)
   end
 
   def genre=(genre)
     @genre = genre
-    genre.item.push(self) unless genre.item.included?(self)
+    genre.item.push(self) unless genre.item.include?(self)
   end
 end

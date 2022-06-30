@@ -1,3 +1,5 @@
+require_relative './movie'
+require_relative '../source/source'
 
 class MovieController
   def initialize
@@ -8,7 +10,7 @@ class MovieController
 
   def read_movies
     movies = []
-    all_movies = File.read('./json_files/movie.json')
+    all_movies = File.read('./movie/json_files/movie.json')
     if all_movies.empty?
       puts 'No movies available'
     elsif all_movies.class != NilClass
@@ -21,49 +23,58 @@ class MovieController
   end  
 
   def add_movie
-    puts 'Please fill the following information:'
-    puts ''
-    puts 'Publisher:'
-    publisher = gets.chomp
+    puts "Please fill the following information\n\n"
+    print 'Publish Year(yyyy): '
+    publish_year = gets.chomp
 
-    puts 'Cover state Good (Y) OR Bad (N):'
+    print 'Is silet (Y) OR (N): '
     state = gets.chomp
-    cover_state = cover_state_choice(state)
+    silet = silet_choice(state)
 
-    puts 'Publish year:'
-    time = gets.chomp
+    print 'Source: '
+    movie_source = gets.chomp
 
-    movie = movie.new(publisher, cover_state, time)
-    write_movies(movie)
+    movie = Movie.new(publish_year, silet)
+    source = Source.new(movie_source)
+    movie.add_source(source)
+
+    save_movie(movie)
     @movies << movie
-    puts 'movie added successfully.'
+    puts 'Movie added successfully.'
   end
 
   def movies_list
     if @movies.empty?
       puts 'No movies available!'
     else
-      puts
-      puts 'The movie list: '
-      puts
-      @movies.each_with_index do |b, indx|
-        puts "#{indx + 1}) Publisher: #{b.publisher} | Publish Date: #{b.publish_date} | Cover state: #{b.cover_state}"
+      puts "\nThe movie list: \n"
+      @movies.each_with_index do |m, index|
+        puts "#{index + 1}) Published year: #{m.publish_date} | Is silet: #{m.silet} | Source: #{m.source.name}"
       end
     end
   end
 
-  def cover_state_choice(state)
+  def save_movie(movie)
+    all_movies = JSON.parse(File.read('./movie/json_files/movie.json'))
+    temp_movie = {
+      silet: movie.silet,
+      publish_date: movie.publish_date,
+      source: movie.source
+    }
+    all_movies.push(temp_movie)
+  
+    File.write('./movie/json_files/movie.json', JSON.generate(all_movies))
+  end
+  
+
+  def silet_choice(state)
     case state
     when 'y'
-      'good'
+      true
     when 'n'
-      'bad'
+      false
     else
-      puts 'Invalid choice'
-      puts ''
-      puts 'Cover state Good (Y) OR Bad (N):'
-      state = gets.chomp
-      cover_state_choice(state)
+      true
     end
   end
 end

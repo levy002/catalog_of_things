@@ -1,5 +1,6 @@
 require './book/book_controller'
 require './book/label_controller'
+require './movie/movie_controller'
 
 class App
   attr_reader :label_controller
@@ -7,6 +8,7 @@ class App
   def initialize
     @book_controller = BookController.new
     @label_controller = LabelController.new
+    @movie_controller = MovieController.new
   end
 
   def books
@@ -47,9 +49,9 @@ class App
     when '1'
       @movie_controller.movies_list
     when '2'
-      @source_controller.sources_list
-    when '4'
-      @label_controller.add_label
+      @movie_controller.sources_list
+    when '3'
+      @movie_controller.add_movie
     else
       puts 'Invalid choice'
       books
