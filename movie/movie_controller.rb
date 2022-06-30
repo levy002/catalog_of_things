@@ -15,7 +15,9 @@ class MovieController
       puts 'No movies available'
     elsif all_movies.class != NilClass
       JSON.parse(all_movies).each do |movie|
+        source = Source.new(movie['source'])
         new_movie = Movie.new(movie['publish_date'], movie['silet'])
+        new_movie.add_source(source);
         movies.push(new_movie)
       end
     end
@@ -59,7 +61,7 @@ class MovieController
     temp_movie = {
       silet: movie.silet,
       publish_date: movie.publish_date,
-      source: movie.source
+      source: movie.source.name
     }
     all_movies.push(temp_movie)
 
