@@ -6,7 +6,6 @@ require './book/label_controller'
 
 class App
   attr_accessor :music_controller, :game_controller
-  attr_accessor :music_controller
   attr_reader :label_controller
 
   def initialize
