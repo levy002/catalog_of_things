@@ -1,0 +1,13 @@
+CREATE DATABASE catalog_of_my_things;
+
+CREATE TABLE movie (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  silet BOOLEAN,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE source (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(50),
+  PRIMARY KEY(id)	
+);
