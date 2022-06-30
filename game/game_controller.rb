@@ -14,7 +14,7 @@ class GameController
   end
 
   def list_authors
-    @authors.map { |author| puts "Name: #{author.first_name author.last_name}" }
+    @authors.map { |author| puts "Name: #{author.first_name} #{author.last_name}" }
   end
 
   def add_game
@@ -27,5 +27,17 @@ class GameController
     game = Game.new(multiplayer, last_played_at)
     @games << game unless @games.include?(game)
     puts 'Game successfully created'
+  end
+
+  def add_author
+    puts 'Please fill the following information:'
+    puts ''
+    puts 'Enter your first name: '
+    first_name = $stdin.gets.chomp
+    print 'Enter your last name: '
+    last_name = $stdin.gets.chomp
+    author = Author.new(first_name, last_name)
+    @authors << author unless @authors.include?(author)
+    puts 'Author successfully created'
   end
 end

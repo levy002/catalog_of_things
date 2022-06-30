@@ -1,6 +1,8 @@
 require_relative './app'
+require_relative 'read_data'
+require_relative 'save_data'
 @method = App.new
-
+read_data
 def print_menu
   puts ''
   print 'Welcome to our catalog! You may perform the following tasks:'
@@ -30,6 +32,7 @@ def match_input(choice)
     @method.movies
   when 5
     puts 'Thanks for using our catalog. Byee!!!'
+    save_data
     exit!
   else
     puts 'Not a valid choice'
