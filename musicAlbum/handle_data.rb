@@ -2,6 +2,16 @@ require 'json'
 require_relative './genre_controller'
 require_relative './music_controller'
 
+def initialize_files
+  File.write('./musicAlbum/data/musics.json', '[]') unless File.exist?('./musicAlbum/data/musics.json')
+  File.zero?('./musicAlbum/data/musics.json') && File.write('./musicAlbum/data/musics.json', '[]')
+
+  File.write('./musicAlbum/data/genres.json', '[]') unless File.exist?('./musicAlbum/data/genres.json')
+  File.zero?('./musicAlbum/data/genres.json') && File.write('./musicAlbum/data/genres.json', '[]')
+end
+
+initialize_files
+
 def save_musics(musics)
   mq = []
   musics.each do |music|
