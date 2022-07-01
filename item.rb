@@ -41,6 +41,6 @@ class Item
 
   def genre=(genre)
     @genre = genre
-    genre.item.push(self) unless genre.item.include?(self)
+    genre.items.push(self) unless genre.items.include?(self)
   end
 end
