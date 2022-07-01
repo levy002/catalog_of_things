@@ -16,7 +16,7 @@ class BookController
 
     puts 'Cover state Good (Y) OR Bad (N):'
     state = gets.chomp
-    cover_state = cover_state_choice(state)
+    cover_state = cover_state_choice(state.downcase)
 
     puts 'Publish year:'
     time = gets.chomp
