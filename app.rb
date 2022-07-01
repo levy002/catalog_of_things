@@ -46,7 +46,8 @@ class App
     1. List all music albums
     2. List all genres
     3. Add a music album
-    4. Add a genre '
+    4. Add a genre'
+
     choice = gets.chomp.to_i
 
     case choice
