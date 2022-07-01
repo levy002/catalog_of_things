@@ -54,12 +54,10 @@ class App
     when 1
       @music_controller.list_all_music
     when 2
-      puts 'List all genres'
       @genre_controller.list_all_genres
     when 3
       @music_controller.add_music
     when 4
-      puts 'Add a genre'
       @genre_controller.add_genre
     else
       puts 'That was an invalid choice. Try again'
