@@ -1,5 +1,6 @@
 require_relative './movie'
 require_relative '../source/source'
+require_relative '../musicAlbum/genre'
 
 class MovieController
   def initialize
@@ -15,9 +16,13 @@ class MovieController
       puts 'No movies available'
     elsif all_movies.class != NilClass
       JSON.parse(all_movies).each do |movie|
+        author = Author.new(movie['author_fname'], movie['author_lname'])
         source = Source.new(movie['source'])
+        genre = Genre.new(movie['genre'])
         new_movie = Movie.new(movie['publish_date'], movie['silet'])
         new_movie.add_source(source)
+        new_movie.genre = genre
+        new_movie.add_author(author)
         movies.push(new_movie)
       end
     end
@@ -28,18 +33,24 @@ class MovieController
     puts "Please fill the following information\n\n"
     print 'Publish Year(yyyy): '
     publish_year = gets.chomp
-
     print 'Is silet (Y) OR (N): '
     state = gets.chomp
     silet = silet_choice(state)
-
     print 'Source: '
     movie_source = gets.chomp
-
+    print 'Genre: '
+    movie_genre = gets.chomp
+    print 'Author first name: '
+    movie_author_fname = gets.chomp
+    print 'Author last name: '
+    movie_author_lname = gets.chomp
     movie = Movie.new(publish_year, silet)
     source = Source.new(movie_source)
+    genre = Genre.new(movie_genre)
+    author = Author.new(movie_author_fname, movie_author_lname)
     movie.add_source(source)
-
+    movie.genre = genre
+    movie.add_author(author)
     save_movie(movie)
     @movies << movie
     puts 'Movie added successfully.'
@@ -51,7 +62,8 @@ class MovieController
     else
       puts "\nThe movie list: \n"
       @movies.each_with_index do |m, index|
-        puts "#{index + 1}) Published year: #{m.publish_date} | Is silet: #{m.silet} | Source: #{m.source.name}"
+        print "#{index + 1}) Published year: #{m.publish_date} | Is silet: #{m.silet} | Source: #{m.source.name} | "
+        print "Genre: #{m.genre.name} | Author: #{m.author.first_name} #{m.author.last_name}"
       end
     end
   end
@@ -73,7 +85,10 @@ class MovieController
     temp_movie = {
       silet: movie.silet,
       publish_date: movie.publish_date,
-      source: movie.source.name
+      source: movie.source.name,
+      genre: movie.genre.name,
+      author_fname: movie.author.first_name,
+      author_lname: movie.author.last_name
     }
     all_movies.push(temp_movie)
 
