@@ -1,7 +1,6 @@
 require_relative './game/game_controller'
 require_relative './musicAlbum/music_controller'
 require './book/book_controller'
-require './book/label_controller'
 require './movie/movie_controller'
 
 class App
@@ -10,7 +9,6 @@ class App
 
   def initialize
     @book_controller = BookController.new
-    @label_controller = LabelController.new
     @movie_controller = MovieController.new
     @game_controller = GameController.new
     @music_controller = MusicController.new
@@ -21,18 +19,15 @@ class App
        1. List all books
        2. List all labels
        3. Add new book
-       4. Add new label
     "
     choice = gets.chomp
     case choice
     when '1'
       @book_controller.books_list
     when '2'
-      @label_controller.labels_list
+      @book_controller.labels_list
     when '3'
       @book_controller.add_book
-    when '4'
-      @label_controller.add_label
     else
       puts 'Invalid choice'
       books
@@ -44,18 +39,19 @@ class App
     1. List all music albums
     2. List all genres
     3. Add a music album
-    : '
+    4. Add a genre '
     choice = gets.chomp.to_i
 
     case choice
     when 1
       @music_controller.list_all_music
     when 2
-      @music_controller.list_all_genres
+      puts 'List all genres'
     when 3
       @music_controller.add_music
     when 4
-      @genre_controller.add_genre
+      puts 'Add a genre'
+      @genre_controller.list_all_genres
     else
       puts 'That was an invalid choice. Try again'
       music
@@ -67,6 +63,7 @@ class App
     1. List all games
     2. List all authors
     3. Add new game
+    4. Add an author
     "
     choice = gets.chomp
     case choice
@@ -76,6 +73,8 @@ class App
       @game_controller.list_authors
     when '3'
       @game_controller.add_game
+    when '4'
+      @game_controller.add_author
     else
       puts 'Invalid choice'
       games
