@@ -43,7 +43,7 @@ class BookController
       puts 'The book list: '
       puts
       @books.each_with_index do |b, indx|
-        puts "#{indx + 1}) Publisher: #{b.publisher} | Publish Date: #{b.publish_date} | Cover state: #{b.cover_state} | label: #{b.label.title}"
+        puts "#{indx + 1}) Publisher: #{b.publisher} | Publish Date: #{b.publish_date} | Cover state: #{b.cover_state} | label: #{b.label}"
       end
     end
   end
