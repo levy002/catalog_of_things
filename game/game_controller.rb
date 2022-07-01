@@ -14,7 +14,8 @@ class GameController
       puts 'No game available!'
     else
       @games.each_with_index do |game, index|
-        puts "#{index + 1} Multiplayer: #{game.multiplayer}, Last played at: #{game.last_played_at}"
+        print "#{index + 1} Multiplayer: #{game.multiplayer}, Last played at: #{game.last_played_at}, "
+        print "Author: #{game.author.first_name} #{game.author.last_name}"
       end
     end
   end
@@ -27,43 +28,46 @@ class GameController
     end
   end
 
-  def add_game
+  def game_user_input
     puts 'Please fill the following information:'
     puts ''
     puts 'Enter a name (Multiplayer): '
-    multiplayer = $stdin.gets.chomp
-    while multiplayer == '' || multiplayer.length < 2
+    @multiplayer = $stdin.gets.chomp
+    while @multiplayer == '' || @multiplayer.length < 2
       print 'No name entered, enter a valid name: '
-      multiplayer = $stdin.gets.chomp
+      @multiplayer = $stdin.gets.chomp
     end
     print 'When last did you play (Year)?("YYYY"): '
-    last_played_at = $stdin.gets.chomp
-    while last_played_at == '' || last_played_at.length != 4
+    @last_played_at = $stdin.gets.chomp
+    while @last_played_at == '' || @last_played_at.length != 4
       print 'No year entered, enter a valid year("YYYY"): '
-      last_played_at = $stdin.gets.chomp
+      @last_played_at = $stdin.gets.chomp
     end
-    game = Game.new(multiplayer, last_played_at)
-    @games << game unless @games.include?(game)
-    puts 'Game successfully created'
   end
 
-  def add_author
-    puts 'Please fill the following information:'
-    puts ''
+  def author_user_input
     puts 'Enter your first name: '
-    first_name = $stdin.gets.chomp
-    while first_name == '' || first_name.length < 2
+    @first_name = $stdin.gets.chomp
+    while @first_name == '' || @first_name.length < 2
       print 'No name entered, enter a valid name: '
-      first_name = $stdin.gets.chomp
+      @first_name = $stdin.gets.chomp
     end
     print 'Enter your last name: '
-    last_name = $stdin.gets.chomp
-    while last_name == '' || last_name.length < 2
+    @last_name = $stdin.gets.chomp
+    while @last_name == '' || @last_name.length < 2
       print 'No name entered, enter a valid name: '
-      last_name = $stdin.gets.chomp
+      @last_name = $stdin.gets.chomp
     end
-    author = Author.new(first_name, last_name)
+  end
+
+  def add_game
+    game_user_input
+    author_user_input
+    author = Author.new(@first_name, @last_name)
+    game = Game.new(@multiplayer, @last_played_at)
+    author.add_item(game)
+    @games << game unless @games.include?(game)
     @authors << author unless @authors.include?(author)
-    puts 'Author successfully created'
+    puts 'Game successfully created'
   end
 end

@@ -6,7 +6,8 @@ end
 
 def save_game
   games_array = @method.game_controller.games.map do |game|
-    { class_instance: 'Game', multiplayer: game.multiplayer, last_played_at: game.last_played_at }
+    { class_instance: 'Game', multiplayer: game.multiplayer, last_played_at: game.last_played_at,
+      author: { first_name: game.author.first_name, last_name: game.author.last_name } }
   end
   games = JSON.generate(games_array)
   File.write('game/games.json', games)
