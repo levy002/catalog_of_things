@@ -15,7 +15,8 @@ def save_musics(musics)
               on_spotify: music.on_spotify,
               publish_date: music.publish_date,
               genre: music.genre.name,
-              author: music.author
+              music_author_fname: music.author.first_name,
+              music_author_secname: music.author.last_name
             })
   end
   File.write('./musicAlbum/data/musics.json', JSON.generate(mq).to_s)
@@ -37,7 +38,9 @@ def read_musics
   JSON.parse(all_musics).each do |music|
     new_music = MusicAlbum.new(music['on_spotify'], music['publish_date'])
     new_genre = Genre.new(music['genre'])
+    new_author = Author.new(music['music_author_fname'], music['music_author_secname'])
     new_music.genre = new_genre
+    new_music.add_author(new_author)
     musics.push(new_music)
   end
   musics

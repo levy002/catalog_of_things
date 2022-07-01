@@ -16,7 +16,8 @@ class MusicController
       puts 'You don\'t have any musics available'
     else
       @musics.each_with_index do |mq, index|
-        puts "#{index}) On spotify: #{mq.on_spotify}, Publish date: #{mq.publish_date}, genre #{mq.genre.name}, Authot: #{mq.author}"
+        print "#{index}) On spotify: #{mq.on_spotify}, Publish date: #{mq.publish_date}, genre #{mq.genre.name}, "
+        print "Author: #{mq.author.first_name} #{mq.author.last_name}"
       end
     end
   end
@@ -42,9 +43,14 @@ class MusicController
     print 'What is the music Genre?: '
     music_genre = gets.chomp
     genre = Genre.new(music_genre)
-    
+    print 'Who is the music author first name? '
+    music_author_fname = gets.chomp
+    print 'Who is the music author second name? '
+    music_author_secname = gets.chomp
+    author = Author.new(music_author_fname, music_author_secname)
     musiq = MusicAlbum.new(spotify_state, date_of_music_publish)
-    musiq.genre=genre
+    musiq.genre = genre
+    musiq.author = author
     @musics << musiq
     save_musics(@musics)
     puts 'Your music was added succesfully!'
