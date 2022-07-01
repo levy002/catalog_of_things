@@ -7,7 +7,7 @@ class MusicController
   attr_accessor :musics
 
   def initialize
-    @musics = []
+    # @musics = []
     @musics = read_musics
   end
 

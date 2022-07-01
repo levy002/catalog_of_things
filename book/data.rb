@@ -9,9 +9,10 @@ def read_books
     puts 'No books available'
   elsif all_books.class != NilClass
     JSON.parse(all_books).each do |book|
-      Label.new(book['label'], book['color'])
+      new_label = Label.new(book['label'], book['color'])
       Author.new(book['first_name'], book['last_name'])
       new_book = Book.new(book['publisher'], book['cover_state'], book['publish_date'])
+      new_book.add_label(new_label)
       books.push(new_book)
     end
   end

@@ -1,5 +1,6 @@
 require 'json'
 require_relative './music_controller'
+require_relative './genre'
 
 def initialize_files
   File.write('./musicAlbum/data/musics.json', '[]') unless File.exist?('./musicAlbum/data/musics.json')

@@ -39,19 +39,16 @@ class App
     1. List all music albums
     2. List all genres
     3. Add a music album
-    4. Add a genre '
+    : '
     choice = gets.chomp.to_i
 
     case choice
     when 1
       @music_controller.list_all_music
     when 2
-      puts 'List all genres'
+      @music_controller.list_all_genres
     when 3
       @music_controller.add_music
-    when 4
-      puts 'Add a genre'
-      @genre_controller.list_all_genres
     else
       puts 'That was an invalid choice. Try again'
       music
