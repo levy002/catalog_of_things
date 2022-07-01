@@ -30,8 +30,7 @@ class MovieController
   end
 
   def add_movie
-    puts "Please fill the following information\n\n"
-    print 'Publish Year(yyyy): '
+    print "Please fill the following information\n\nPublish Year(yyyy): "
     publish_year = gets.chomp
     print 'Is silet (Y) OR (N): '
     state = gets.chomp
